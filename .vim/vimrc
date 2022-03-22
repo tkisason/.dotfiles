@@ -1,12 +1,18 @@
 syntax on
+filetype on
 filetype plugin indent on
 set expandtab
 set paste
 set ruler
 set hlsearch    " highlight all search results
-set ignorecase  " do case insensitive search 
+set ignorecase  " do case insensitive search
 set incsearch   " show incremental search results as you type
 set number      " display line number
 set noswapfile  " disable swap file
 set cursorline
+set background=dark
 colorscheme solarized
+
+" highlight extra whitespaces - kost
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+\%#\@<!$/

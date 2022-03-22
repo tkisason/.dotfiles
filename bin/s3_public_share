@@ -1,0 +1,7 @@
+#!/bin/bash
+aws s3 cp $1 s3://little-shop-of-horrors/$1
+aws s3api put-object-acl --bucket little-shop-of-horrors --key $1 --acl public-read
+echo "Here, fetch: https://little-shop-of-horrors.s3.eu-central-1.amazonaws.com/$1"
+echo "Press CTRL+D when you want to remove the file"
+cat
+aws s3 rm s3://little-shop-of-horrors/$1

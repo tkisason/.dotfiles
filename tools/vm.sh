@@ -7,6 +7,6 @@ fi
 
 apt update
 apt full-upgrade -y
-apt install -y vim tmux secure-delete terminator i3 rofi xss-lock docker.io xclip scrot
+apt install -y git vim tmux secure-delete terminator i3 rofi xss-lock docker.io xclip scrot
 timedatectl set-timezone Europe/Zagreb
 apt autoremove -y

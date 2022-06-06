@@ -21,4 +21,3 @@ ln -s ~/.dotfiles/.zshrc ~/.zshrc
 ln -s ~/.dotfiles/.tmux.conf ~/.tmux.conf
 
 chmod -R 700 ~/.gnupg/ ~/.ssh/
-

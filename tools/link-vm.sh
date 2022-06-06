@@ -5,12 +5,9 @@ if (($EUID == 0)); then
   exit 1
 fi
 
-mv ~/.zshrc ~/.zshrc.kali
-rm -rf ~/Documents ~/Music ~/Pictures ~/Public ~/Templates ~/Videos
-
+mv ~/.zshrc ~/.zshrc.old
 
 # rest is plain link.sh
-
 
 # make sure we dump those configs where they should be
 mkdir ~/.config
@@ -28,10 +25,6 @@ ln -s ~/.dotfiles/.zshrc ~/.zshrc
 ln -s ~/.dotfiles/.tmux.conf ~/.tmux.conf
 
 chmod -R 700 ~/.gnupg/ ~/.ssh/
-
-
-
-
 
 # If we want copy/paste in a vm, we need this:
 

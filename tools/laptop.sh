@@ -1,18 +1,22 @@
 #!/usr/bin/bash
 
+if (($EUID != 0)); then
+  echo >&2 "You need to run this with sudo!"
+  exit 1
+fi
 
 apt update
 apt upgrade -y
 apt autoremove -y
 apt install -y zsh vim tmux curl wget nmap whois jq git unzip ripgrep fd-find byobu htop p7zip-full bc secure-delete rfkill dcfldd
-apt install -y proxychains tcpdump tshark smbclient socat samba-common-bin ldap-utils nbtscan netdiscover tsocks rtorrent speedtest-cli
+apt install -y tcpdump smbclient socat samba-common-bin rtorrent
 apt install -y wireguard openvpn
 apt install -y docker.io
 
 # desktop stuff
 apt install -y i3 rofi xss-lock tlp
 apt install -y xinit xfce4-settings xfce4-volumed thunar gvfs-bin i3blocks
-apt install -y firefox thunderbird terminator
+apt install -y firefox terminator
 apt install -y blackbird-gtk-theme fonts-noto-color-emoji yaru-theme-gtk yaru-theme-icon fonts-firacode ubuntu-restricted-extras
 apt install -y arandr evince ristretto network-manager keepassxc redshift-gtk caffeine pavucontrol pamix bluez pulseaudio-module-bluetooth
 apt install -y imagemagick xclip scrot

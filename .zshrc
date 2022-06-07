@@ -2,10 +2,14 @@
 
 # load vcs info plugin
 autoload -Uz vcs_info
-autoload -Uz compinit
+autoload -Uz compinit colors vcs_info
+colors
 compinit
 
 precmd() { vcs_info }
+
+# if a command takes more than 10 seconds, print the duration and cpuinfo
+REPORTTIME=10
 
 # Format the vcs_info_msg_0_ variable
 zstyle ':vcs_info:git:*' formats '(%b) '
@@ -24,15 +28,16 @@ PROMPT='%F{green}${PWD/#$HOME/~} ${vcs_info_msg_0_}>%f '
 ### Programming specific stuff
 export GOPATH="$HOME/w/go"
 
+#go/bin in path
+export PATH="$HOME/w/go/bin:$PATH"
+
+
 # pyenv required stuff
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
-
-#go/bin in path
-export PATH="$HOME/w/go/bin:$PATH"
 
 ## shell specific stuff
 
@@ -53,8 +58,6 @@ bindkey "^[[B" history-search-forward
 #eval $(crc oc-env)
 
 # misc
-
-
 # yubikey
 #export GPG_TTY="$(tty)"
 #export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
@@ -63,14 +66,11 @@ bindkey "^[[B" history-search-forward
 ###gpg-connect-agent updatestartuptty /bye >/dev/null
 alias swap_yubikey='gpg-connect-agent "scd serialno" "learn --force" /bye'
 
-
-
 # stop semgrep from snitching
 export SEMGREP_SEND_METRICS=off
 
-
-alias get_semgrep_agent_results="cat .semgrep_logs/semgrep_agent_output | jq '.[].results[].check_id' | sort | uniq -c | sort"
-
+# dotfiles/bins are stuff i want to run. 
+export PATH="$HOME/.dotfiles/bin:$PATH"
 
 # shortcuts!
 nullssh () { ssh -o StrictHostKeyChecking=no -o GlobalKnownHostsFile=/dev/null -o UserKnownHostsFile=/dev/null -v $@ ; }
@@ -78,7 +78,7 @@ nullssh () { ssh -o StrictHostKeyChecking=no -o GlobalKnownHostsFile=/dev/null -
 crfind () { rg  -p -C 15 -i -F $1  | less -R ; }
 
 alias pubip='dig +short myip.opendns.com @resolver1.opendns.com'
+alias wget-clone="wget --no-clobber --convert-links --random-wait -r -p -E -e robots=off -U mozilla"
+#brightness () { echo $( echo "( 68.18*$1 )/1" | bc) > /sys/class/backlight/intel_backlight/brightness ; }
+#brightness.get () { echo "$( cat /sys/class/backlight/intel_backlight/brightness)/68.18" | bc ; }
 
-
-
-source ~/.dotfiles/.zsh_tricks_mac

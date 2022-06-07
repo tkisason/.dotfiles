@@ -1,2 +1,0 @@
-#!/bin/bash
-scrot -s ~/3docs/screenshots/$(date +%d-%m-%Y-%H%m%S.png)

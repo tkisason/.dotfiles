@@ -1,0 +1,2 @@
+#!/bin/bash
+scrot -s ~/Desktop/$(date +%d-%m-%Y-%H%m%S.png)

@@ -17,7 +17,6 @@ mkdir ~/.gnupg
 # symlink configs from .dotfiles
 ln -s ~/.dotfiles/config/i3 ~/.config/i3
 ln -s ~/.dotfiles/config/terminator ~/.config/terminator
-ln -s ~/.dotfiles/config/rofi ~/.config/rofi
 ln -s ~/.dotfiles/config/redshift ~/.config/redshift
 
 ln -s ~/.dotfiles/.vim ~/.vim

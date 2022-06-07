@@ -53,6 +53,8 @@ export EDITOR=vim
 bindkey "^[[A" history-search-backward
 bindkey "^[[B" history-search-forward
 
+
+
 #source <(kubectl completion zsh)
 #source <(minikube completion zsh)
 #eval $(crc oc-env)
